@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-03 13:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: config/settings.py:117
+#: config/settings.py:117
+msgid "Uzbek"
+msgstr "Uzbek"
+
+#: config/settings.py:118
+msgid "Russian"
+msgstr "Russian"
+
+#: config/settings.py:119
+msgid "English"
+msgstr "English"
+
+#: templates/about.html:17 templates/about.html:54 templates/about.html:220
+#: templates/contact.html:55 templates/contact.html:215
+#: templates/furniture.html:54 templates/furniture.html:226
+#: templates/index.html:57 templates/index.html:468 templates/shop.html:54
+#: templates/shop.html:197
+msgid " Biz haqimizda "
+msgstr " About Us "
+
+#: templates/about.html:51 templates/contact.html:52
+#: templates/furniture.html:51 templates/index.html:54 templates/shop.html:51
+msgid " Asosiy "
+msgstr " Home "
+
+#: templates/about.html:57 templates/contact.html:58
+#: templates/furniture.html:57 templates/index.html:60 templates/shop.html:57
+msgid " Mahsulotlar  "
+msgstr " Products "
+
+#: templates/about.html:60 templates/contact.html:61
+#: templates/furniture.html:17 templates/furniture.html:60
+#: templates/index.html:63 templates/shop.html:60
+msgid " Toifalar "
+msgstr " Categories "
+
+#: templates/about.html:63 templates/contact.html:17 templates/contact.html:64
+#: templates/furniture.html:63 templates/index.html:66 templates/shop.html:63
+msgid " Bog'lanish "
+msgstr " Contact "
+
+#: templates/about.html:125 templates=index.html:161 templates=index.html:204
+msgid " Ko'proq o'qish "
+msgstr " Read More "
+
+#: templates/about.html:202 templates/contact.html:197
+#: templates/furniture.html:208 templates=index.html:450
+#: templates/shop.html:179
+msgid " Ijtimoiy tarmoqlar "
+msgstr " Social Media "
+
+#: templates/about.html:222 templates/contact.html:217
+#: templates/furniture.html:228 templates=index.html:470
+#: templates/shop.html:199
+msgid "\n"
+"    Saytimiz orqali siz badge, sovg'a buyumlari va lazer bilan bog'liq "
+"mahsulotlarni buyurtma qilishingiz mumkin.\n"
+"    Sifatli va ishonchli xizmat siz uchun!\n"
+msgstr "\n"
+"    Through our website, you can order badges, gift items, and laser-related "
+"products.\n"
+"    Quality and reliable service for you!\n"
+
+#: templates/about.html:234 templates/contact.html:229
+#: templates/furniture.html:240 templates=index.html:481
+#: templates/shop.html:212
+msgid " Barcha huquqlar himoyalangan "
+msgstr " All rights reserved "
+
+#: templates/contact.html:120 templates=index.html:165 templates=index.html:339
+msgid " Biz bilan bog'lanish "
+msgstr " Contact Us "
+
+#: templates/contact.html:132
+msgid " Manzil "
+msgstr " Address "
+
+#: templates/contact.html:134
+msgid " Telefon "
+msgstr " Phone "
+
+#: templates/contact.html:136 templates=index.html:360
+msgid " Telegram "
+msgstr " Telegram "
+
+#: templates/contact.html:139
+msgid " Ma'lumotlar mavjud emas "
+msgstr " No data available "
+
+#: templates/furniture.html:121 templates=index.html:229
+msgid " Ommabop toifalar "
+msgstr " Popular Categories "
+
+#: templates/index.html:294 templates/shop.html:118
+msgid " Mahsulotlarimiz "
+msgstr " Our Products "
+
+#: templates/index.html:304
+msgid " Yangi "
+msgstr " New "
+
+#: templates=index.html:324
+msgid " Batafsil "
+msgstr " Details "
+
+#: templates/index.html:350
+msgid " Telefon raqam "
+msgstr " Phone Number "
+
+#: templates/index.html:355
+msgid " Manzil  "
+msgstr " Address "
+
+#: templates/index.html:396
+msgid " Bizning Hamkorlar "
+msgstr " Our Partners "
+
+#: templates/shop.html:17
+msgid " Mahsulotlar "
+msgstr " Products "

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="{{ LANGUAGE_CODE }}">
+
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="shahzod_eshonqulov" />
+
+  <title>iPrint</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}  " rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          {% for logo in logos %}
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{{ logo.photo.url }}" alt="" />
+          </a>
+          {% endfor %}
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">{% blocktrans %} Asosiy {% endblocktrans %} <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}"> {% blocktrans %} Biz haqimizda {% endblocktrans %} </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'shop' %}"> {% blocktrans %} Mahsulotlar  {% endblocktrans %} </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'furniture' %}">  {% blocktrans %} Toifalar {% endblocktrans %} </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}"> {% blocktrans %} Bog'lanish {% endblocktrans %} </a>
+              </li>
+            </ul>
+
+<!-- tarnslete boshlanishu -->
+
+<div class="language-selector" style="background: none; border: none;">
+  <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+    {% csrf_token %}
+    <select name="language" onchange="this.form.submit()" style="background: none; border: none; padding: 5px;">
+      <option value="uz" {% if LANGUAGE_CODE == 'uz' %}selected{% endif %}>
+        &#x1F1FA;&#x1F1FF; Uz
+      </option>
+      <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>
+        &#x1F1F7;&#x1F1FA; Ru
+      </option>
+      <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>
+        &#x1F1EC;&#x1F1E7; En
+      </option>
+    </select>
+  </form>
+</div>
+
+
+
+<!-- tarnslete tugashi -->
+
+
+          </div>
+          <div>
+            <div class="custom_menu-btn ">
+              <button>
+                <span class=" s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </header>
+      <section class="slider_section">
+                  {% if banners %}
+                  <div class="play_btn">
+                    {% if banners.0.video_url %}
+                    <a href="{{ banners.0.video_url }}">
+                      <img src="{% static 'images/play.png' %}" alt="">
+                    </a>
+                    {% endif %}
+                  </div>
+
+                  <div class="number_box">
+                    <div>
+                      <ol class="carousel-indicators indicator-2">
+                        {% for banner in banners %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"
+                            class="{% if forloop.first %}active{% endif %}">0{{ forloop.counter }}</li>
+                        {% endfor %}
+                      </ol>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        {% for banner in banners %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"
+                            class="{% if forloop.first %}active{% endif %}"></li>
+                        {% endfor %}
+                      </ol>
+
+                          <div class="carousel-inner">
+                            {% for banner in banners %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="detail-box">
+                                    <h1>
+                                      {{ banner.title }}
+                                      {% if banner.subtitle %}
+                                      <br>
+                                      <span>{{ banner.subtitle }}</span>
+                                      {% endif %}
+                                    </h1>
+                                    <p>{{ banner.description }}</p>
+                                    <div class="btn-box">
+                                      {% if banner.video_url %}
+                                      <a href="{% url 'shop' %}" class="btn-1">
+                                         {% blocktrans %} Ko'proq o'qish {% endblocktrans %}
+                                      </a>
+                                      {% endif %}
+                                      <a href="{% url 'contact' %}" class="btn-2">
+                                         {% blocktrans %} Biz bilan bog'lanish {% endblocktrans %}
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 img-container">
+                                  <div class="img-box">
+                                    <img src="{{ banner.photo.url }}" alt="{{ banner.title }}">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+
+
+                    </div>
+                  </div>
+                  {% endif %}
+      </section>
+  </div>
+
+  <!-- about section -->
+{% for about1 in about %}
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                {{ about1.title }}
+              </h2>
+
+            </div>
+            <p>
+              {{ about1.description }}
+            </p>
+            <a href="{% url 'about' %}">
+              {% blocktrans %} Ko'proq o'qish {% endblocktrans %}
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{{ about1.photo.url }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endfor %}
+  <!-- end about section -->
+
+
+  <!-- trending section -->
+
+<section class="trending_section layout_padding">
+  <div id="accordion">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2> {% blocktrans %} Ommabop toifalar {% endblocktrans %} </h2>
+            </div>
+            <div class="tab_container">
+              {% for category in categories %}
+              <div class="t-link-box {% if forloop.first %} {% else %}collapsed{% endif %}"
+                   data-toggle="collapse"
+                   data-target="#collapse{{ forloop.counter }}"
+                   aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                   aria-controls="collapse{{ forloop.counter }}">
+                <div class="number">
+                  <h5>{{ forloop.counter|stringformat:"02d" }}</h5>
+                </div>
+                <hr>
+                <div class="t-name">
+                  <h5>{{ category.name }}</h5>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          {% for category in categories %}
+          <div class="collapse {% if forloop.first %}show{% endif %}" id="collapse{{ forloop.counter }}"
+               data-parent="#accordion">
+            <div class="img_container">
+              {% with category.images.all as images %}
+              <div class="box b-1">
+                {% if images|length > 0 %}
+                <div class="img-box"><img src="{{ images.0.image.url }}" alt=""></div>
+                {% endif %}
+                {% if images|length > 1 %}
+                <div class="img-box"><img src="{{ images.1.image.url }}" alt=""></div>
+                {% endif %}
+              </div>
+              <div class="box b-2">
+                {% if images|length > 2 %}
+                <div class="img-box"><img src="{{ images.2.image.url }}" alt=""></div>
+                {% endif %}
+                {% if images|length > 3 %}
+                <div class="img-box"><img src="{{ images.3.image.url }}" alt=""></div>
+                {% endif %}
+              </div>
+              {% endwith %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- end discount section -->
+
+  <!-- brand section -->
+
+
+<section class="brand_section">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        {% blocktrans %} Mahsulotlarimiz {% endblocktrans %}
+      </h2>
+    </div>
+    <div class="brand_container layout_padding2">
+      {% for product in products %}
+      <div class="box">
+        <a href="">
+          {% if product.is_new %}
+          <div class="new">
+            <h5>
+              {% blocktrans %} Yangi {% endblocktrans %}
+            </h5>
+          </div>
+          {% endif %}
+          <div class="img-box">
+            <img src="{{ product.photo.url }}" alt="{{ product.name }}">
+          </div>
+          <div class="detail-box">
+            <h6 class="price">
+              {{ product.price }} UZS
+            </h6>
+            <h6>
+              {{ product.name }}
+            </h6>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{% url 'shop' %}" class="brand-btn">
+      {% blocktrans %} Batafsil {% endblocktrans %}
+    </a>
+  </div>
+</section>
+
+
+
+
+  <!-- end brand section -->
+<br><br>
+  <!-- contact section -->
+<section class="partner_section pt-3 pb-3">
+  <div class="container">
+    <div class="heading_container">
+      <h2 class="">
+        {% blocktrans %} Biz bilan bog'lanish {% endblocktrans %}
+      </h2>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        {% for i in info %}
+          <div style="margin-bottom: 25px;">
+            <p style="font-size: 18px; margin-bottom: 20px;">
+              <strong> {% blocktrans %} Telefon raqam {% endblocktrans %}: </strong><br>
+              {{ i.phone }}
+            </p>
+
+            <p style="font-size: 18px; margin-bottom: 20px;">
+              <strong> {% blocktrans %} Manzil  {% endblocktrans %}: </strong><br>
+              {{ i.address }}
+            </p>
+
+            <p style="font-size: 18px; margin-bottom: 20px;">
+              <strong> {% blocktrans %} Telegram {% endblocktrans %}: </strong><br>
+              <a href="{{ i.telegram_url }}" target="_blank">{{ i.telegram_url }}</a>
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-6">
+        <div class="map_container" style="margin-top: 15px;">
+          <div class="map-responsive" style="height: 450px;">
+            {% for i in info %}
+              <iframe
+                src="{{ i.google_map_url }}"
+                width="600"
+                height="450"
+                style="border:0; width: 100%; height: 100%;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- end contact section -->
+
+  <!-- client section -->
+
+<!-- Hamkorlar - davomiy harakatlanadigan lenta -->
+<section class="partner_section layout_padding">
+  <div class="container">
+    <div class="heading_container text-center mb-4">
+      <h2> {% blocktrans %} Bizning Hamkorlar {% endblocktrans %} </h2>
+    </div>
+    <div class="partner_marquee">
+      <div class="partner_track">
+        {% for partner in partners %}
+        <div class="partner_logo text-center">
+          <img src="{{ partner.photo.url }}" alt="{{ partner.name }}">
+          <p class="partner_name">{{ partner.name }}</p>
+        </div>
+        {% endfor %}
+        {% for partner in partners %}  <!-- seamless loop -->
+        <div class="partner_logo text-center">
+          <img src="{{ partner.photo.url }}" alt="{{ partner.name }}">
+          <p class="partner_name">{{ partner.name }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+   <!-- end client section -->
+
+  <!-- info section -->
+<footer class="custom-footer">
+  <div class="footer-container">
+
+    <!-- 1: Logo va aloqa -->
+    <div class="footer-box">
+      <div class="footer-logo">
+        <img src="{% static 'images/logo/logo2.jpg' %}" alt="Logo">
+      </div>
+      {% for i in info %}
+      <ul class="footer-contact">
+        <li>
+          <img src="{% static 'images/logo/location.png' %}" alt="Manzil">
+          {{ i.address }}
+        </li>
+        <li>
+          <img src="{% static 'images/logo/phone.png' %}" alt="Telefon">
+          {{ i.phone }}
+        </li>
+        {% if i.telegram_url %}
+        <li>
+          <img src="{% static 'images/logo/telegram4.png' %}" alt="Telegram">
+          <a href="{{ i.telegram_url }}" target="_blank">{{ i.telegram_url }}</a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endfor %}
+    </div>
+
+    <!-- 2: Ijtimoiy tarmoqlar -->
+    <div class="footer-box">
+      <h3> {% blocktrans %} Ijtimoiy tarmoqlar {% endblocktrans %} </h3>
+      <div class="footer-social">
+        {% for sm in media %}
+          {% if sm.platform == 'telegram' %}
+            <a href="{{ sm.url }}" target="_blank"><img src="{% static 'images/logo/telegram.png' %}" alt="Telegram"></a>
+          {% elif sm.platform == 'instagram' %}
+            <a href="{{ sm.url }}" target="_blank"><img src="{% static 'images/logo/instagram.png' %}" alt="Instagram"></a>
+          {% elif sm.platform == 'youtube' %}
+            <a href="{{ sm.url }}" target="_blank"><img src="{% static 'images/logo/youtube.png' %}" alt="YouTube"></a>
+          {% elif sm.platform == 'olx' %}
+            <a href="{{ sm.url }}" target="_blank"><img src="{% static 'images/logo/olx.png' %}" alt="OLX"></a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- 3: Qisqacha haqida -->
+    <div class="footer-box">
+      <h3> {% blocktrans %} Biz haqimizda {% endblocktrans %} </h3>
+      {% for f in footer %}
+      <p> {{ f.description }} </p>
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ now|date:"Y" }} iPrint.  {% blocktrans %} Barcha huquqlar himoyalangan {% endblocktrans %} .</p>
+  </div>
+</footer>
+
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        420: {
+          items: 2
+        },
+        1000: {
+          items: 5
+        }
+      }
+
+    });
+  </script>
+  <script>
+    var nav = $("#navbarSupportedContent");
+    var btn = $(".custom_menu-btn");
+    btn.click
+    btn.click(function (e) {
+
+      e.preventDefault();
+      nav.toggleClass("lg_nav-toggle");
+      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+    });
+  </script>
+  <script>
+    $('.carousel').on('slid.bs.carousel', function () {
+      $(".indicator-2 li").removeClass("active");
+      indicators = $(".carousel-indicators li.active").data("slide-to");
+      a = $(".indicator-2").find("[data-slide-to='" + indicators + "']").addClass("active");
+      console.log(indicators);
+
+    })
+  </script>
+
+<!-- hamkorlar uchun o'zgartirish kiritildi -->
+<!-- OwlCarousel JS (jQuery va Bootstrap-dan keyin bo‘lishi kerak) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $(".partner_slider").owlCarousel({
+      loop: true,
+      margin: 20,
+      autoplay: true,
+      autoplayTimeout: 2500,
+      autoplayHoverPause: true,
+      responsive: {
+        0: { items: 2 },
+        600: { items: 3 },
+        1000: { items: 5 }
+      }
+    });
+  });
+</script>
+
+<!-- translete boshlanishi  -->
+
+
+
+
+
+<!-- tenslete tugashi-->
+
+
+</body>
+</body>
+
+</html>
