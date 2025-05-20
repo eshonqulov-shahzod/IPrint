@@ -31,7 +31,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
 
 # Faqat sizning domeningizga ruxsat berish
-ALLOWED_HOSTS = ['*']  # kerakli manzillarni yozing
+ALLOWED_HOSTS = ['maktab33.uz', 'www.maktab33.uz']  # kerakli manzillarni yozing
 
 # XSS (Cross-site scripting) himoyasi
 SECURE_BROWSER_XSS_FILTER = True
@@ -78,7 +78,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'config.urls'
 
@@ -164,15 +167,15 @@ USE_TZ = True
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / '/home/maktab93/maktab33.uz/django/media'
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / '/home/maktab93/maktab33.uz/django/static']
+STATIC_ROOT = BASE_DIR / '/home/maktab93/maktab33.uz/django/staticfiles'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
