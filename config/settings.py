@@ -167,15 +167,15 @@ USE_TZ = True
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / '/home/maktab93/maktab33.uz/django/media'
-
+MEDIA_ROOT = '/home/maktab93/maktab33.uz/django/media'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    '/home/maktab93/maktab33.uz/django/static',
+]
+STATIC_ROOT = '/home/maktab93/maktab33.uz/django/staticfiles'
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / '/home/maktab93/maktab33.uz/django/static']
-STATIC_ROOT = BASE_DIR / '/home/maktab93/maktab33.uz/django/staticfiles'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
